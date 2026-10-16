@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% from 'macros.html' import card %}
+{% block content %}
+<section class="container main-head"><div><div class="section-kicker"><span></span> TODAY'S MOTOR JOURNAL</div><h1>讓每一則<span>車壇消息</span><br>都值得你停下來看。</h1><p>從台灣新車、機車文化到交通政策，連結全球汽車產業的重要時刻。</p></div><div class="issue-marker"><strong>{{ issue }}</strong><small>DAILY ISSUE<br>TAIWAN EDITION</small></div></section>
+{% if demo_mode %}<div class="container"><div class="notice"><span class="notice-icon">!</span><div><strong>目前是網站展示模式</strong><span>以下為示範文章，不是即時新聞。將專案放上 GitHub 並執行更新工作流程後，成功取得的新資料會取代展示內容。</span></div></div></div>{% endif %}
+<section class="container hero-layout" aria-label="今日焦點">
+  {% if hero %}<a href="{{ root }}article/{{ hero.id }}/" class="main-feature">
+    {% if hero.image %}<img src="{{ hero.image }}" alt="{{ hero.title }}" class="main-feature-img">{% else %}<img src="{{ root }}assets/{{ hero.art }}" alt="{{ hero.category_name }}主題概念插畫" class="main-feature-img">{% endif %}
+    <div class="feature-scrim"></div><div class="feature-content"><div class="feature-topline"><span class="red-square"></span> EDITOR'S TOP STORY <span class="feature-line"></span> {{ hero.category_name }}</div>{% if hero.demo %}<span class="feature-demo">非即時新聞・展示內容</span>{% endif %}<h2>{{ hero.title }}</h2><p>{{ hero.summary }}</p><div class="feature-bottom"><span>{{ hero.date_text }} <b>／</b> {{ hero.source_name }}</span><span class="feature-btn">閱讀焦點 <b>↗</b></span></div></div>
+  </a>{% else %}<div class="empty-feature"><span>STANDBY</span><h2>新聞正在準備中</h2><p>首次執行新聞更新後，這裡會顯示重要消息。</p></div>{% endif %}
+  <div class="feature-side"><div class="side-title"><span>TOP STORIES</span><span>02 / 04</span></div>
+    {% for a in top_side %}<a class="side-story" href="{{ root }}article/{{ a.id }}/"><span class="side-number">0{{ loop.index }}</span><div><small>{{ a.category_name }} · {{ a.date_text }}</small><h3>{{ a.title }}</h3><span class="side-go">READ MORE ↗</span></div></a>{% endfor %}
+    <div class="side-foot">THE MOST RELEVANT STORIES<br><strong>台灣重要資訊優先</strong></div>
+  </div>
+</section>
+<section class="container section-block"><div class="section-title"><div><div class="section-kicker"><span></span> THE LATEST</div><h2>最新<span>消息</span></h2></div><div class="section-title-end">依日期排序 <span>↓</span></div></div>
+  {% if articles %}<div class="cards-grid">{% for a in articles %}{{ card(a,root) }}{% endfor %}</div>{% else %}<div class="empty-state"><strong>目前尚無新聞</strong><p>請稍後再回來，或到 GitHub Actions 手動執行更新。</p></div>{% endif %}
+</section>
+<section class="container strip-panel"><div class="strip-tag">THE EDITORIAL STANDARD</div><div><h2>不是所有快訊，都值得急著轉發。</h2><p>我們優先使用可查證的新聞來源，區分政策草案與正式施行；缺乏資料時寧可短一點，也不憑空補寫內容。</p></div><span class="strip-symbol">//</span></section>
+<section class="container category-section"><div class="section-title"><div><div class="section-kicker"><span></span> EXPLORE</div><h2>選擇你的<span>車壇焦點</span></h2></div></div><div class="category-grid">{% for c in categories %}<a class="category-tile" href="{{ root }}category/{{ c.key }}/"><span class="cat-count">0{{ loop.index }} / CATEGORY</span><strong>{{ c.name }}</strong><p>{{ c.caption }}</p><span class="cat-arrow">↗</span></a>{% endfor %}</div></section>
+<div class="container update-bar"><span><span class="status-light"></span> 最後成功更新：{{ last_success_text }}</span><span>資料以來源官方公告與新聞原文為準</span></div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% from 'macros.html' import card %}
+{% block title %}{{ category.name }}｜MOTOR DAILY 車壇日報{% endblock %}
+{% block content %}<div class="container inner-page"><a class="breadcrumbs" href="{{ root }}index.html">首頁 <span>/</span> {{ category.name }}</a><div class="inner-head"><div><span class="section-kicker"><span></span> {{ category.en }}</span><h1>{{ category.name }}</h1><p>{{ category.caption }}。聚焦值得關注、可追溯來源的資訊。</p></div><span class="inner-head-index">0{{ category.index }}</span></div>
+{% if demo_mode %}<div class="notice slim"><span class="notice-icon">!</span><div><strong>展示模式：</strong><span>示範文章非即時新聞；首次成功自動更新後將被替換。</span></div></div>{% endif %}
+<div class="section-title listing-head"><div><div class="section-kicker"><span></span> CATEGORY ARCHIVE</div><h2>全部<span>文章</span> <small>{{ articles|length }} STORIES</small></h2></div><span class="section-title-end">最新優先 <span>↓</span></span></div>
+{% if articles %}<div class="cards-grid">{% for a in articles %}{{ card(a,root) }}{% endfor %}</div>{% else %}<div class="empty-state"><strong>此分類暫無新聞</strong><p>新聞來源尚未提供可確認的相關消息。請稍後回來查看。</p></div>{% endif %}
+<a class="back-link" href="{{ root }}index.html">← 返回首頁</a></div>{% endblock %}

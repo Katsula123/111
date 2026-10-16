@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% from 'macros.html' import card %}
+{% block title %}{{ article.title }}｜MOTOR DAILY{% endblock %}
+{% block content %}<div class="container article-wrap"><div class="breadcrumbs"><a href="{{ root }}index.html">首頁</a> <span>/</span> <a href="{{ root }}category/{{ article.category }}/">{{ article.category_name }}</a> <span>/</span> 文章</div>
+  <header class="article-head"><div class="article-label"><span class="red-square"></span> {{ article.category_name|upper }} <span class="label-line"></span> MOTOR DAILY</div>{% if article.demo %}<span class="demo-pill">網站展示文章・非即時新聞</span>{% endif %}<h1>{{ article.title }}</h1><p class="article-deck">{{ article.summary }}</p><div class="article-byline"><span>{{ article.date_text }}</span><span>／</span><span>{{ article.source_name }}</span><span>／</span><span>{{ article.region }}</span></div></header>
+  <div class="article-hero">{% if article.image %}<img src="{{ article.image }}" alt="{{ article.title }}">{% else %}<img src="{{ root }}assets/{{ article.art }}" alt="主題概念插畫，非新聞實車照片">{% endif %}</div>
+  <div class="article-grid"><article class="article-body"><div class="article-lead"><span>01</span><h2>事件摘要</h2></div><p class="lead-text">{{ article.summary }}</p><div class="article-lead second"><span>02</span><h2>詳細整理</h2></div>{% for p in article.paragraphs %}<p>{{ p }}</p>{% endfor %}
+    {% if article.quality=='brief' and not article.demo %}<div class="brief-note"><strong>內容透明說明</strong><p>這則消息目前只有有限的公開摘要，本站未補寫未經證實的細節，因此文章短於一般報導長度。來源標題本身不代表我們已完成獨立查核。</p></div>{% endif %}
+    <div class="source-box"><div class="source-box-head">SOURCE &amp; ATTRIBUTION</div><div class="source-row"><span>消息來源</span><strong>{{ article.source_name }}</strong></div><div class="source-row"><span>資料發布日期</span><strong>{{ article.date_text }}</strong></div>
+      {% if article.source_url %}<a class="source-button" href="{{ article.source_url }}" rel="noopener noreferrer" target="_blank">閱讀原始來源 <span>↗</span></a>{% else %}<p class="demo-source">這是示範文章，不含外部新聞來源。</p>{% endif %}
+      {% if article.image %}<p class="image-attribution">照片：{% if article.image_page %}<a href="{{ article.image_page }}" target="_blank" rel="noopener noreferrer">{{ article.image_credit }}</a>{% else %}{{ article.image_credit }}{% endif %}</p>{% else %}<p class="image-attribution">主圖為本站原創通用示意插畫，非特定車型新聞照片。</p>{% endif %}
+    </div>
+    <a class="back-link" href="{{ root }}index.html">← 返回新聞首頁</a>
+  </article><aside class="article-aside"><div class="aside-title">READ NEXT <span>↗</span></div>{% for a in related %}<a class="aside-story" href="{{ root }}article/{{ a.id }}/"><small>{{ a.category_name }} · {{ a.date_text }}</small><strong>{{ a.title }}</strong><span>閱讀文章 ↗</span></a>{% endfor %}<div class="aside-notice">新聞查證原則<br><p>交通法規以正式公告為準；新車售價、上市日期以原廠與總代理資訊為準。</p></div></aside></div>
+</div>{% endblock %}

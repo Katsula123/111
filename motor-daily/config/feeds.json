@@ -1,0 +1,32 @@
+[
+  {
+    "name": "台灣新車與市場",
+    "kind": "google_news",
+    "category": "new-car",
+    "url": "https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3%20%28%E6%B1%BD%E8%BB%8A%20OR%20%E6%96%B0%E8%BB%8A%29%20%28%E7%99%BC%E8%A1%A8%20OR%20%E4%B8%8A%E5%B8%82%20OR%20%E5%94%AE%E5%83%B9%29%20when%3A7d&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant"
+  },
+  {
+    "name": "台灣交通政策",
+    "kind": "google_news",
+    "category": "traffic",
+    "url": "https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3%20%28%E4%BA%A4%E9%80%9A%E6%96%B0%E5%88%B6%20OR%20%E9%A7%95%E7%85%A7%20OR%20%E7%BD%B0%E9%8D%B0%20OR%20%E9%81%93%E8%B7%AF%E4%BA%A4%E9%80%9A%29%20when%3A7d&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant"
+  },
+  {
+    "name": "台灣機車與重機",
+    "kind": "google_news",
+    "category": "motorcycle",
+    "url": "https://news.google.com/rss/search?q=%E5%8F%B0%E7%81%A3%20%28%E6%A9%9F%E8%BB%8A%20OR%20%E9%87%8D%E6%A9%9F%29%20%28%E6%96%B0%E8%BB%8A%20OR%20%E7%99%BC%E8%A1%A8%20OR%20%E4%B8%8A%E5%B8%82%29%20when%3A7d&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant"
+  },
+  {
+    "name": "全球車壇大事",
+    "kind": "google_news",
+    "category": "global",
+    "url": "https://news.google.com/rss/search?q=%28%E8%BB%8A%E5%BB%A0%20OR%20%E6%B1%BD%E8%BB%8A%E5%93%81%E7%89%8C%29%20%28%E6%96%B0%E8%BB%8A%20OR%20%E5%8F%AC%E5%9B%9E%20OR%20%E9%9B%BB%E5%8B%95%E8%BB%8A%20OR%20%E5%90%88%E4%BD%9C%29%20when%3A7d&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant"
+  },
+  {
+    "name": "公路局官方最新消息",
+    "kind": "official",
+    "category": "traffic",
+    "url": "https://www.thb.gov.tw/OpenData.aspx?SN=14F103987102091C"
+  }
+]

@@ -1,0 +1,15 @@
+{% macro card(a, root, compact=false) -%}
+<a class="story-card {% if compact %}story-card-compact{% endif %}" href="{{ root }}article/{{ a.id }}/">
+  <div class="story-picture">
+    {% if a.image %}<img src="{{ a.image }}" alt="{{ a.title }}（圖片來源見文章內頁）" loading="lazy">{% else %}<img src="{{ root }}assets/{{ a.art }}" alt="{{ a.category_name }}通用示意插畫，非新聞實車照片" loading="lazy">{% endif %}
+    <span class="img-category">{{ a.category_name }}</span>
+  </div>
+  <div class="story-content">
+    {% if a.demo %}<span class="demo-pill">展示文章</span>{% endif %}
+    <div class="story-meta"><span>{{ a.date_text }}</span><span>·</span><span>{{ a.source_name }}</span></div>
+    <h3>{{ a.title }}</h3>
+    <p>{{ a.summary }}</p>
+    <div class="story-bottom"><span>閱讀文章</span><span class="arrow-icon">↗</span></div>
+  </div>
+</a>
+{%- endmacro %}

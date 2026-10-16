@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111318">
+  <meta name="description" content="{{ description|default('台灣優先的汽機車新聞日報，追蹤新車、交通法規、全球車壇與機車消息。') }}">
+  <title>{% block title %}MOTOR DAILY｜車壇日報{% endblock %}</title>
+  <link rel="icon" href="{{ root }}assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ root }}assets/style.css">
+  <meta property="og:title" content="{{ self.title()|striptags }}">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <div class="ticker"><div class="container ticker-inner"><span><span class="live-dot"></span> THE DAILY DRIVE</span><span>台灣車壇・國際新訊・交通政策</span><span class="ticker-right">{{ display_date }} <i>／</i> TAIWAN</span></div></div>
+  <header class="site-header">
+    <div class="container head-inner">
+      <a class="wordmark" href="{{ root }}index.html" aria-label="MOTOR DAILY 首頁">
+        <span class="brand-symbol">M<span>/</span></span><span class="brand-title">MOTOR<span class="brand-accent">.</span>DAILY<small>車 壇 日 報 <b> / </b> DRIVE THE NEWS</small></span>
+      </a>
+      <div class="header-right"><span class="header-eyebrow">AUTOMOTIVE JOURNAL</span><strong>車迷的每日閱讀</strong></div>
+    </div>
+  </header>
+  <nav class="nav-shell" aria-label="主要導覽"><div class="container nav-inner">
+    <a class="nav-link {% if active=='all' %}active{% endif %}" href="{{ root }}index.html">首頁 <span>01</span></a>
+    {% for c in categories %}<a class="nav-link {% if active==c.key %}active{% endif %}" href="{{ root }}category/{{ c.key }}/">{{ c.name }} <span>{{ loop.index + 1 if loop.index < 9 else '' }}</span></a>{% endfor %}
+    <span class="nav-spacer"></span><span class="nav-tag">TAIWAN FIRST <span class="status-light"></span></span>
+  </div></nav>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer class="footer"><div class="container">
+    <div class="footer-top"><div><div class="footer-logo">MOTOR<span>.</span>DAILY</div><p>把值得關注的車壇消息，整理成每天看得懂的新聞。</p></div><div class="footer-note">本網站為免費、非營利的新聞摘要示範專案。<br>所有消息以原始來源及官方公告為準。</div></div>
+    <div class="footer-bottom"><span>© {{ year }} MOTOR DAILY · 車壇日報</span><span>DESIGNED FOR THE ROAD AHEAD <span class="foot-red">↗</span></span></div>
+  </div></footer>
+</body>
+</html>
